@@ -60,7 +60,10 @@ class Text(object):
         Return mean, median and mode word length. Includes only words (i.e. no numbers) in calculation.
         """
         len_words_only = [len(s) if s.isalpha() else 0 for s in self.text]
-        return sum(len_words_only) / len(len_words_only), median(len_words_only), mode(len_words_only)
+        if (sum(len_words_only) == 0):
+            return 0, 0, 0
+        else:
+            return sum(len_words_only) / len(len_words_only), median(len_words_only), mode(len_words_only)
 
     def word_count(self):
         """
@@ -91,12 +94,18 @@ class Text(object):
 
         word_count = self.word_count()
 
-        print("\nThere are {} words in the text.".format(word_count))
+        print("\nThere are {} words in the text.".format(word_count))         
+
         mean, median, mode = self.average_word_length()
 
-        print("\nMean, median and mode word length is {}, {}, {}.".format(mean, median, mode))
 
-        print("\n10 longest words:")
+        print("\nMean, median and mode word length is {}, {}, {}.".format(mean, median, mode))
+        
+        ls = len(self.longest_words())
+        if ls < 10:
+            print('Longest words:')
+        else:
+            print("10 longest words:".format(ls))
         for s in self.longest_words():
             print(s)
 
@@ -105,7 +114,7 @@ class Text(object):
             print("{} x {}".format(s[1], s[0]))
 
         longest_grams = []
-
+        
         # find n_longest n-grams
         n_longest = 10
         # strongly doubt that there will be n-grams longer than 50
@@ -115,16 +124,16 @@ class Text(object):
             grams = self.find_ngrams(i)
             grams_list = sorted(grams, key=grams.get, reverse=True)
 
-            for g in grams_list:
-                if grams[g] > 4:
+            for g in grams_list: # for each gram, starting from longest
+                if grams[g] > 4: # if n-gram length is greater than 4
                     # do not want to include n-grams which are substrings of longer n-grams
                     substring = False
-                    for s in longest_grams:
-                        if g in s[1]:
-                            substring = True
+                    for s in longest_grams: # for each element in the list of longest grams
+                        if g in s[1]:       # if the gram itself can be found within the longest gram
+                            substring = True  # then it's a substring
                             break
                     if not substring:
-                        longest_grams.append([grams[g], g])
+                        longest_grams.append([grams[g], g])  # first loop, longest_grams receives first 
 
         print("\nLongest n-grams:")
         for g in longest_grams:
