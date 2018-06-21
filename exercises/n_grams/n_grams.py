@@ -60,10 +60,10 @@ class Text(object):
         Return mean, median and mode word length. Includes only words (i.e. no numbers) in calculation.
         """
         len_words_only = [len(s) if s.isalpha() else 0 for s in self.text]
-        if (sum(len_words_only) == 0):
-            return 0, 0, 0
-        else:
-            return sum(len_words_only) / len(len_words_only), median(len_words_only), mode(len_words_only)
+#        if (sum(len_words_only) == 0):
+#            return 0, 0, 0
+#        else:
+        return sum(len_words_only) / len(len_words_only), median(len_words_only), mode(len_words_only)
 
     def word_count(self):
         """
@@ -94,13 +94,13 @@ class Text(object):
 
         word_count = self.word_count()
 
-        print("\nThere are {} words in the text.".format(word_count))         
+        print("\nThere are {} words in the text.".format(word_count))
 
         mean, median, mode = self.average_word_length()
 
 
         print("\nMean, median and mode word length is {}, {}, {}.".format(mean, median, mode))
-        
+
         ls = len(self.longest_words())
         if ls < 10:
             print('Longest words:')
@@ -114,7 +114,7 @@ class Text(object):
             print("{} x {}".format(s[1], s[0]))
 
         longest_grams = []
-        
+
         # find n_longest n-grams
         n_longest = 10
         # strongly doubt that there will be n-grams longer than 50
@@ -133,7 +133,7 @@ class Text(object):
                             substring = True  # then it's a substring
                             break
                     if not substring:
-                        longest_grams.append([grams[g], g])  # first loop, longest_grams receives first 
+                        longest_grams.append([grams[g], g])  # first loop, longest_grams receives first
 
         print("\nLongest n-grams:")
         for g in longest_grams:
