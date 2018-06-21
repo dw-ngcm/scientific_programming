@@ -2,6 +2,7 @@
 import pytest
 from n_grams import Text
 import numpy
+import subprocess
 
 test_files = ["blank.txt", "repeat.txt", "short.txt"]
 
@@ -52,9 +53,19 @@ def test_common_words():
 def test_url():
     assert(len(Text.read_text('http://www.gutenberg.org/files/11/11-0.txt')) == 26611)
 
-def test_whole_function():
+def test_reporting_function():
     '''Reporting function isn't meant to return a value'''
     assert(Text('hello.txt').text_report()==None)
+    assert(Text('repeat.txt').text_report()==None)
+
+def test_external_call():
+    '''To grab 100% coverage'''
+    process = subprocess.Popen('python n_grams.py'.split(),stdout=subprocess.PIPE)
+    output, error = process.communicate()
+
+    process = subprocess.Popen('python n_grams.py hello.txt'.split(),stdout=subprocess.PIPE)
+    output, error = process.communicate()
+
 
 
 
