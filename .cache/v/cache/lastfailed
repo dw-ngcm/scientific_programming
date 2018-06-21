@@ -1,0 +1,8 @@
+{
+  "exercises/solutions/test_n_grams.py::test_average_word_length": true,
+  "exercises/solutions/test_n_grams.py::test_common_words": true,
+  "exercises/solutions/test_n_grams.py::test_find_ngrams": true,
+  "exercises/solutions/test_n_grams.py::test_longest_words": true,
+  "exercises/solutions/test_n_grams.py::test_read_text": true,
+  "exercises/solutions/test_n_grams.py::test_word_count": true
+}
