@@ -48,3 +48,6 @@ def test_common_words():
     # check no word appears more than once in this file
     for word, freq in Text("short.txt").common_words():
         assert freq == 1
+
+def test_url():
+    assert(len(Text.read_text('http://www.gutenberg.org/files/11/11-0.txt') == 26611)
