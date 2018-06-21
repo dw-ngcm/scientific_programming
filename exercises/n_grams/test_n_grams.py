@@ -50,4 +50,6 @@ def test_common_words():
         assert freq == 1
 
 def test_url():
-    assert(len(Text.read_text('http://www.gutenberg.org/files/11/11-0.txt') == 26611)
+    assert(len(Text.read_text('http://www.gutenberg.org/files/11/11-0.txt')) == 26611)
+
+
