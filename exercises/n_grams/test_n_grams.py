@@ -52,4 +52,10 @@ def test_common_words():
 def test_url():
     assert(len(Text.read_text('http://www.gutenberg.org/files/11/11-0.txt')) == 26611)
 
+def test_whole_function():
+    '''Reporting function isn't meant to return a value'''
+    assert(Text('hello.txt').text_report()==None)
+
+
+
 
