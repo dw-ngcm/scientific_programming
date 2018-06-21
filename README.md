@@ -1,4 +1,4 @@
-# Scientific Programming  https://travis-ci.org/dw-ngcm/scientific_programming.svg?branch=master
+# Scientific Programming  [![Build Status](https://travis-ci.org/dw-ngcm/scientific_programming.svg?branch=master)](https://travis-ci.org/dw-ngcm/scientific_programming)
 
 This repository contains a collection of notebooks and exercises for the [scientific programming course](http://ngcm.soton.ac.uk/summer-academy/sciprog.html) at the 2017 NGCM Summer Academy.
 
